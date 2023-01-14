@@ -17,5 +17,26 @@ class Solution:
 
         return array
 
-s1 = Solution.fizzBuzz(Solution, 15)
+
+    def numberOfSteps(self, num):
+        contadorPasos = 0
+        # cuando es even, divide y me quedo con la división de 2
+        # (es decir divisible módulo 2)
+        # si no es, restarle 1
+        # cuando llegue a cero termina el programa
+
+        # mientras que sea mayor que 0, que ejecute; en 0 termina
+        while num > 0:
+            # si es divisible entre 2, me quedo con el resultado
+            if num % 2 == 0:
+                num = num / 2
+            else: # si no le resto 1, solamente
+                num = num - 1 # asumimos que no es par
+            contadorPasos = contadorPasos + 1
+            # voy actualizando el contador
+        return contadorPasos
+
+
+
+s1 = Solution.numberOfSteps(Solution, 14)
 print(s1)
