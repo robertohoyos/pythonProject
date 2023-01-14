@@ -1,5 +1,7 @@
-
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
+import statistics
+
+
 class Solution:
     def fizzBuzz(self, n: int):
         array = [str] * n
@@ -8,15 +10,14 @@ class Solution:
 
             if ((x + 1) % 5 == 0) and ((x + 1) % 3 == 0):
                 array[x] = "FizzBuzz"
-            elif (x+1) % 3 == 0:
+            elif (x + 1) % 3 == 0:
                 array[x] = "Fizz"
-            elif (x+1) % 5 == 0:
+            elif (x + 1) % 5 == 0:
                 array[x] = "Buzz"
             else:
-                array[x] = str(x+1)
+                array[x] = str(x + 1)
 
         return array
-
 
     def numberOfSteps(self, num):
         contadorPasos = 0
@@ -30,13 +31,21 @@ class Solution:
             # si es divisible entre 2, me quedo con el resultado
             if num % 2 == 0:
                 num = num / 2
-            else: # si no le resto 1, solamente
-                num = num - 1 # asumimos que no es par
+            else:  # si no le resto 1, solamente
+                num = num - 1  # asumimos que no es par
             contadorPasos = contadorPasos + 1
             # voy actualizando el contador
         return contadorPasos
 
+    # le ingresan dos listas
+    def findMedianSortedArrays(self, nums1, nums2):
+        # sumarlas, luego aplicarle el mecanismo
+        listaNums = nums1 + nums2  # listas concatenadas
+        numeroFloat = float(statistics.median(listaNums))
+        return numeroFloat
 
 
-s1 = Solution.numberOfSteps(Solution, 14)
+numsa = [1, 3, 4]
+numsb = [9]
+s1 = Solution.findMedianSortedArrays(Solution, numsa, numsb)
 print(s1)
