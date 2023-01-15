@@ -44,8 +44,28 @@ class Solution:
         numeroFloat = float(statistics.median(listaNums))
         return numeroFloat
 
+    # funciona perfecto con enteros, pero cuando hay negativos hay problema
+    # para no alterarlo mucho cuando haya un menos sólo poner el signo al final con un if
+    def reverse(self, x: int) -> int:
+        bandera = 0
+        # checar primero si tiene signo al principio
+            # si el número es menor que 0 volverlo absoluto y ponerle un signo al final
+        if (x < 0):
+            x = abs(x)
+            bandera = True
+        # recibe el número y colocalos en una lista
+        # voltea la lista
+        # convertirla en un int
+        listaString = [int(a) for a in str(x)] #convierte a lista de ints
+        nuevoNum = [str(integer) for integer in listaString] # reconvierte
+        nuevoNum.reverse()
+        datoEnString = "".join(nuevoNum) #paraVolverloString
 
-numsa = [1, 3, 4]
-numsb = [9]
-s1 = Solution.findMedianSortedArrays(Solution, numsa, numsb)
+        if bandera == True:
+            datoEnString = "-"+datoEnString
+
+        return int(datoEnString)
+
+
+s1 = Solution.reverse(Solution, -239)
 print(s1)
