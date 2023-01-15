@@ -47,12 +47,12 @@ class Solution:
     # funciona perfecto con enteros, pero cuando hay negativos hay problema
     # para no alterarlo mucho cuando haya un menos sólo poner el signo al final con un if
     def reverse(self, x: int) -> int:
-        bandera = 0
+        banderaNegativo = 0
         # checar primero si tiene signo al principio
             # si el número es menor que 0 volverlo absoluto y ponerle un signo al final
         if (x < 0):
             x = abs(x)
-            bandera = True
+            banderaNegativo = True
         # recibe el número y colocalos en una lista
         # voltea la lista
         # convertirla en un int
@@ -61,11 +61,16 @@ class Solution:
         nuevoNum.reverse()
         datoEnString = "".join(nuevoNum) #paraVolverloString
 
-        if bandera == True:
+        if banderaNegativo == True:
             datoEnString = "-"+datoEnString
+
+        # para checar que no está fuera de parámetros
+        # ponerle la restricción de si es mayor de 32 bit
+        if int(datoEnString) > 2 ** 31 or (int(datoEnString)) < -(2 ** 31):
+            datoEnString = 0
 
         return int(datoEnString)
 
 
-s1 = Solution.reverse(Solution, -239)
+s1 = Solution.reverse(Solution, -123)
 print(s1)
