@@ -5,13 +5,6 @@ import statistics
 from typing import Optional #para los métodos con parámetros opcionales
 
 
-class ListNode:
-    def __init__(self, val=0, next=None): # por default se crea con uno
-        self.val = val
-        self.next = next
-
-
-
 class SingleLinkedList:
     def __init__(self):
         self.head = none
@@ -289,6 +282,7 @@ class Solution:
 
         return numerofinal
 
+# a partir de aquí este código fue generado con chatGPT
     class RomanToDecimal:
         def __init__(self):
             self.roman_dict = {
@@ -328,8 +322,32 @@ class Solution:
         # Return the length of the longest substring
         return max_len
 
+
+# para linkedlists
+    class ListNode:
+        def __init__(self, val=0, next=None):
+            self.val = val
+            self.next = next
+
+    def addTwoNumbers(l1: ListNode, l2: ListNode) -> ListNode:
+        carry = 0
+        result = ListNode(0)
+        curr = result
+        while l1 or l2 or carry:
+            val1 = l1.val if l1 else 0
+            val2 = l2.val if l2 else 0
+            total = val1 + val2 + carry
+            carry = total // 10
+            curr.next = ListNode(total % 10)
+            curr = curr.next
+            l1 = l1.next if l1 else None
+            l2 = l2.next if l2 else None
+        return result.next
+
+
+
 # s1 = Solution.addTwoNumbers(Solution, [2,4,3], [5,6,4])
-s1 = Solution.lengthOfLongestSubstring('Analiza esto, mal nacido.')
+s1 = Solution.addTwoNumbers(Solution.ListNode([2,4,3]), Solution.ListNode([5,6,4]))
 # rtd = RomanToDecimal(); s1 = rtd.roman_to_decimal('MCMXCIV')
 # dentro de la clase solución está integrada también la clase de RomanDecimal
 print(s1)
